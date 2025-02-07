@@ -8,7 +8,7 @@ homeController.get('/', (req, res) => {
 });
 
 homeController.get('/about', (req, res) => {
-    res.render('about', { layout: false });  
+    res.render('about', {layout: false});  
 });
 
 export default homeController;

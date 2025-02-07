@@ -1,13 +1,17 @@
-export class Movie {
-    constructor(id, title, category, genre, director, year, imageURL, rating, description) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.genre = genre;
-        this.director = director;
-        this.year = year;
-        this.imageURL = imageURL;
-        this.rating = rating;
-        this.description = description;
-    }
-}
+import { Schema, model } from "mongoose";
+
+const movieSchema = new Schema({
+    id: String, 
+    title: String, 
+    category: String, 
+    genre: String, 
+    director: String, 
+    year: Number, 
+    imageURL: String, 
+    rating: Number, 
+    description: String
+});
+
+const Movie = model('Movie', movieSchema);
+
+export default Movie;

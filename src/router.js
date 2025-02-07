@@ -1,12 +1,10 @@
 import { Router } from "express";
 import homeController from "./controllers/homeController.js";
+import moviesController from "./controllers/movieController.js";
 
 const router = Router();
 
-router.use(homeController)
+router.use(homeController);
+router.use(moviesController);
 
-router.get('**', (req, res) => {
-    res.render('404', { layout: false });  
-});
-
-export default router
+export default router;
