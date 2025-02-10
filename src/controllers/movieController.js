@@ -12,13 +12,13 @@ moviesController.post('/create', async (req, res) => {
 
     try {
         const movie = await movieService.create(movieData);
-        res.json(movie);
+        res.status(200).redirect('/');
     } catch (error) {
         console.log(error);
         res.status(400);
     }
 
-    res.render('home', {layout: false});
+    //res.render('home', {layout: false});
 })
 
 export default moviesController;
