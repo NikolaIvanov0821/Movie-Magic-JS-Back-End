@@ -3,6 +3,11 @@ import Movie from "../models/movie.js";
 
 
 const movieService = {
+    getAll(filter = {}) {
+        const query = Movie.find({});
+
+        return query
+    },
     create(newMovie) {
         console.log(newMovie);
         const rating = Number(newMovie.rating);
