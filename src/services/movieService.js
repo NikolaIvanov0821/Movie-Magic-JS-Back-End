@@ -6,7 +6,11 @@ const movieService = {
     getAll(filter = {}) {
         const query = Movie.find({});
 
-        return query
+        return query;
+    },
+    getOne(id) {
+        const query = Movie.findById(id);
+        return query;
     },
     create(newMovie) {
         console.log(newMovie);
