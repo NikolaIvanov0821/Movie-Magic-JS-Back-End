@@ -4,7 +4,21 @@ import Movie from "../models/movie.js";
 
 const movieService = {
     getAll(filter = {}) {
-        const query = Movie.find({});
+        let query = Movie.find({});
+        
+        if (filter.search) {
+            query = query.where({ title: filter.search });
+        }
+
+        if (filter.genre) {
+            query = query.where({ genre: filter.genre });
+        }
+
+        if (filter.year) {
+            query = query.where({ year: Number(filter.year) })
+        }
+
+        //console.log(query);
 
         return query;
     },

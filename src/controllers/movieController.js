@@ -19,7 +19,7 @@ moviesController.post('/create', async (req, res) => {
     }
 
     //res.render('home', {layout: false});
-})
+});
 
 moviesController.get('/details/:id', async (req, res) => {
     const id = req.params.id;
@@ -29,8 +29,15 @@ moviesController.get('/details/:id', async (req, res) => {
         res.render('details', { movie });
     } catch (error) {
         console.log(error);
-        res.status(400)
+        res.status(400);
     }
-})
+});
+
+moviesController.get('/search', async (req, res) => {
+    const filter = req.query;
+    console.log(filter);
+    const movies = await movieService.getAll(filter)
+    res.render('search', { movies }); 
+});
 
 export default moviesController;
