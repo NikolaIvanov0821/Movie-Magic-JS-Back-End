@@ -13,12 +13,12 @@ homeController.get('/about', (req, res) => {
     res.render('about');  
 });
 
-homeController.get('/404', (req, res) => {
-    res.render('404')
-})
+// homeController.get('/404', (req, res) => {
+//     res.render('404')
+// })
 
-homeController.get('*', (req, res) => {
-    res.redirect('404')
-})
+// homeController.get('*', (req, res) => {
+//     res.redirect('404')
+// })
 
 export default homeController;
