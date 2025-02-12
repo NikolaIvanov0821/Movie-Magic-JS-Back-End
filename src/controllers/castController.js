@@ -8,15 +8,16 @@ castController.get('/create/cast', (req, res) => {
 });
 
 castController.post('/create/cast', (req, res) => {
-    const query = req.query;
-    console.log(query);
+    const body = req.body;
     try {
-        const cast = castService.create(query);
+        const cast = castService.create(body);
         res.status(200).redirect('/');
     } catch (error) {
         console.log(error);
         res.status(400)
     }
-})
+});
+
+
 
 export default castController;
