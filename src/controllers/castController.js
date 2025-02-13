@@ -19,7 +19,7 @@ castController.post('/create/cast', (req, res) => {
 });
 
 castController.get('/attach/cast/:id', (req, res) => {
-    res.render('attach');
+    res.render('cast-attach');
 });
 
 export default castController;
