@@ -18,8 +18,6 @@ const movieService = {
             query = query.where({ year: Number(filter.year) })
         }
 
-        //console.log(query);
-
         return query;
     },
     getOne(id) {
@@ -37,6 +35,10 @@ const movieService = {
             rating: rating,
             year: year
         });
+    },
+    attachCast(movieId, cast) {
+        const movie = Movie.findById(movieId)
+        console.log(move);
     }
 }
 
