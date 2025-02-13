@@ -33,7 +33,19 @@ castController.get('/attach/cast/:id', async (req, res) => {
         console.log(error);
         res.status(400)
     }
+});
 
+castController.post('/attach/cast/:id', async (req, res) => {
+    const movieId = req.params.id;
+    const castId = req.body;
+
+    try {
+        await movieService.attachCast(movieId, castId);
+        res.redirect(`details/${movieId}`);
+    } catch (error) {
+        console.log(error);
+        res.status(400);
+    }
 });
 
 export default castController;

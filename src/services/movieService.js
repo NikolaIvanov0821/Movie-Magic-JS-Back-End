@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid"
 import Movie from "../models/movie.js";
+import Cast from "../models/cast.js";
 
 
 const movieService = {
@@ -36,9 +37,10 @@ const movieService = {
             year: year
         });
     },
-    attachCast(movieId, cast) {
-        const movie = Movie.
-        console.log(movie);
+    attachCast(movieId, castId) {
+        const movie = Movie.findByIdAndUpdate(movieId, {$push: {cast: castId}});
+        const cast = Cast.findByIdAndUpdate(castId, {$set: {movie: movieId}});
+        return { movie, cast };
     }
 }
 
