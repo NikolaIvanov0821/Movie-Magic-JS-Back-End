@@ -41,7 +41,7 @@ castController.post('/attach/cast/:id', async (req, res) => {
 
     try {
         await movieService.attachCast(movieId, castId);
-        res.redirect(`details/${movieId}`);
+        res.redirect(`/details/${movieId}`);
     } catch (error) {
         console.log(error);
         res.status(400);

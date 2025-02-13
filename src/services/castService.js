@@ -5,8 +5,12 @@ const castService = {
         return Cast.create(cast);
     },
     getAll(filter = {}) {
-        const query = Cast.find({});
+        let query = Cast.find({});
 
+        if (filter.id) {
+            query = query.where({ movie: filter.id });
+        }
+        
         return query;
     }
 }

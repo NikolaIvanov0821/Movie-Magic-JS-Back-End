@@ -1,5 +1,6 @@
 import { Router } from "express";
 import movieService from "../services/movieService.js";
+import castService from "../services/castService.js";
 
 const moviesController = Router();
 
@@ -25,8 +26,10 @@ moviesController.get('/details/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const movie = await movieService.getOne(id);
+        const cast = await castService.getAll(id);
         console.log(movie);
-        res.render('details', { movie });
+        console.log(cast);
+        res.render('details', { movie, cast });
     } catch (error) {
         console.log(error);
         res.status(400);
