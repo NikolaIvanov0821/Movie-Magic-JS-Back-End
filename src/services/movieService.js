@@ -37,8 +37,8 @@ const movieService = {
         });
     },
     attachCast(movieId, cast) {
-        const movie = Movie.findById(movieId)
-        console.log(move);
+        const movie = Movie.
+        console.log(movie);
     }
 }
 
