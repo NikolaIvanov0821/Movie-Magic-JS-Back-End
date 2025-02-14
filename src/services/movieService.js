@@ -25,7 +25,7 @@ const movieService = {
         const query = Movie.findById(id);
         return query;
     },
-    create(newMovie) {
+    create(newMovie, creatorId) {
         console.log(newMovie);
         const rating = Number(newMovie.rating);
         const year = Number(newMovie.year);
@@ -34,7 +34,8 @@ const movieService = {
         return Movie.create({
             ...newMovie,
             rating: rating,
-            year: year
+            year: year,
+            creator: creatorId
         });
     },
     attachCast(movieId, castId) {
