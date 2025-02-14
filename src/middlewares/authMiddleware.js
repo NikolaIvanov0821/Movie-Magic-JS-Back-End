@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export const authMiddleware = (req, res, next) => {
     const token = req.cookies['auth'];
@@ -15,14 +15,15 @@ export const authMiddleware = (req, res, next) => {
         
         next();
     } catch(err) {
+        console.log(err);
         res.clearCookie('auth');
-        res.redirect('/auth/login');
+        res.redirect('/');
     }
 };
 
 export const isAuth = (req, res, next) => {
     if (!req.user) {
-        return res.redirect('/auth/login');
+        return res.redirect('/');
     } 
 
     next();

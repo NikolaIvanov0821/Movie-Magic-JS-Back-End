@@ -11,7 +11,25 @@ authController.post('/register', async (req, res) => {
     const userData = req.body;
 
     try {
-        await authService.register(userData);
+        const user = await authService.register(userData);
+        res.cookie('auth', user, { httpOnly: true })
+        res.status(200).redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.status(400);
+    }
+});
+
+authController.get('/login', (req, res) => {
+    res.render('login')
+});
+
+authController.post('/login', async (req, res) => {
+    const userData = req.body;
+
+    try {
+        const user = await authService.login(userData);
+        res.cookie('auth', user, { httpOnly: true })
         res.status(200).redirect('/');
     } catch (error) {
         console.log(error);
