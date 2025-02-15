@@ -1,14 +1,15 @@
 import { Router } from "express";
 import castService from "../services/castService.js";
 import movieService from "../services/movieService.js";
+import { isAuth } from "../middlewares/authMiddleware.js";
 
 const castController = Router();
 
-castController.get('/create/cast', (req, res) => {
+castController.get('/create/cast', isAuth, (req, res) => {
     res.render('cast-create');
 });
 
-castController.post('/create/cast', (req, res) => {
+castController.post('/create/cast', isAuth, (req, res) => {
     const body = req.body;
     try {
         const cast = castService.create(body);
@@ -19,7 +20,7 @@ castController.post('/create/cast', (req, res) => {
     }
 });
 
-castController.get('/attach/cast/:id', async (req, res) => {
+castController.get('/attach/cast/:id', isAuth, async (req, res) => {
     const movieId = req.params.id;
 
     try {
@@ -35,7 +36,7 @@ castController.get('/attach/cast/:id', async (req, res) => {
     }
 });
 
-castController.post('/attach/cast/:id', async (req, res) => {
+castController.post('/attach/cast/:id', isAuth, async (req, res) => {
     const movieId = req.params.id;
     const castId = req.body;
 

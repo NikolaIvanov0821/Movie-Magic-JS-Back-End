@@ -28,3 +28,5 @@ export const isAuth = (req, res, next) => {
 
     next();
 }
+
+export default {authMiddleware, isAuth}
